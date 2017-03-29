@@ -1,0 +1,4 @@
+include ':rx-telephony'
+include ':rx-telephony-kotlin'
+include ':rx2-telephony'
+include ':rx2-telephony-kotlin'
