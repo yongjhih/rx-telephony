@@ -20,10 +20,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresPermission;
 import android.telephony.TelephonyManager;
 
 import rx.Observable;
 import rx.receiver.android.RxReceiver;
+
+import static android.Manifest.permission.READ_PHONE_STATE;
 
 public final class RxTelephony {
     private RxTelephony() {
@@ -45,6 +48,7 @@ public final class RxTelephony {
      */
     @CheckResult
     @NonNull
+    @RequiresPermission(READ_PHONE_STATE)
     public static Observable<Intent> phoneStateChanges(@NonNull final Context context) {
         return RxReceiver.receives(context,
                 new IntentFilter(TelephonyManager.ACTION_PHONE_STATE_CHANGED));
